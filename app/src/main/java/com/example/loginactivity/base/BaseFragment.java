@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -21,16 +22,6 @@ public abstract class BaseFragment<T extends FragmentActivity, U extends BasePre
     protected U mPresenter;
     protected FragmentListener fragmentListener;
 
-    protected void setTitle(String title){
-        this.title = title;
-        fragmentListener.setTitle(title);
-    }
-
-    protected String getTitle() {
-        return title;
-    }
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,13 +32,22 @@ public abstract class BaseFragment<T extends FragmentActivity, U extends BasePre
         return view;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.activity = (T) context;
         this.fragmentListener = (FragmentListener) context;
     }
+
+    protected void setTitle(String title){
+        this.title = title;
+        fragmentListener.setTitle(title);
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
 
 
 }

@@ -2,6 +2,7 @@ package com.example.loginactivity.base;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -13,7 +14,7 @@ public abstract  class BaseActivity extends FragmentActivity implements Fragment
     protected BaseFragment currentFragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initializeView();
         initializeFragment();
@@ -35,7 +36,7 @@ public abstract  class BaseActivity extends FragmentActivity implements Fragment
             fragmentTransaction.addToBackStack(currentFragment.getTitle());
         }
 
-        fragmentTransaction.replace(R.id.flFragmentContainer, fragment, fragment.getTitle());
+        fragmentTransaction.replace(R.id.fl_fragment_container, fragment, fragment.getTitle());
         fragmentTransaction.commit();
 
         this.currentFragment = fragment;
