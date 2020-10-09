@@ -29,7 +29,7 @@ public class ProfileFragment extends BaseFragment<ProfileActivity, ProfileContra
         tvEmail = fragmentView.findViewById(R.id.tv_email);
         tvPassword = fragmentView.findViewById(R.id.tv_password);
 
-        setTitle(getResources().getString(R.string.profile_setting));
+        setTitle(getResources().getString(R.string.profile_site));
         mPresenter.start();
 
         return fragmentView;

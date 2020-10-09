@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:gravity="center"
-        android:text="@string/profile_setting"
+        android:text="@string/profile_site"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <TextView

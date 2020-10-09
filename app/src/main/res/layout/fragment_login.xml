@@ -48,5 +48,5 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/login_page" />
+        android:text="@string/login" />
 </LinearLayout>

@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,17 +20,13 @@ import com.example.loginactivity.base.BaseFragment;
 
 public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Presenter> implements LoginContract.View {
 
-    EditText etEmail;
-    EditText etPassword;
+    private TextInputEditText etEmail;
+    private TextInputEditText etPassword;
     Button btnLogin;
-
-
-    public LoginFragment() {
-    }
 
     @Nullable
     @Override
-    public android.view.View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.fragment_login, container, false);
         mPresenter = new LoginPresenter(this, requireContext());
@@ -39,20 +34,15 @@ public class LoginFragment extends BaseFragment<LoginActivity, LoginContract.Pre
 
         etEmail = fragmentView.findViewById(R.id.et_email);
         etPassword = fragmentView.findViewById(R.id.et_password);
-        btnLogin = fragmentView.findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setBtLoginClick();
-            }
-        });
+        btnLogin = fragmentView.findViewById(R.id.btn_login);
+        btnLogin.setOnClickListener(this::setBtLoginClick);
 
-        setTitle("My Login View");
+        setTitle("Login Site");
 
         return fragmentView;
     }
 
-    public void setBtLoginClick(){
+    private void setBtLoginClick(View view){
         String email = etEmail.getText().toString();
         String password = etPassword.getText().toString();
         mPresenter.performLogin(email,password);

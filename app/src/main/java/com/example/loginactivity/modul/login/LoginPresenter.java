@@ -18,13 +18,21 @@ public class LoginPresenter implements LoginContract.Presenter{
     }
 
     @Override
-    public void start() {}
-
-    @Override
-    public void performLogin(final String email, final String password){
+    public void performLogin(String email, String password){
         //proses login
-        //if login success call redirect to profile
+        saveUser(email, password);
         view.redirectToProfile();
     }
 
+    @Override
+    public void start() {
+
+    }
+
+    private void saveUser(String email, String password) {
+        SharedPreferences.Editor editor = this.sharedPreferences.edit();
+        editor.putString(EMAIL_KEY, email);
+        editor.putString(PASSWORD_KEY, password);
+        editor.commit();
+    }
 }
